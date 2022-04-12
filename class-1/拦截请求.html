@@ -1,0 +1,54 @@
+<head>
+	<meta charset="UTF-8" />
+</head>
+<button id="action-1">axios 按钮</button>
+<button id="action-2">js 按钮</button>
+<script>
+	const winXhrProto = window.XMLHttpRequest.prototype
+	const origSend = winXhrProto.send
+	const origOpen = winXhrProto.open
+	winXhrProto.open = function (method, url) {
+		console.log('---------------- open ----------------')
+		console.log(arguments)
+		const xhr = this
+		xhr.addEventListener('load', function () {
+			console.log('---------------- load ----------------')
+			console.log(arguments)
+		})
+		xhr.addEventListener('loadend', function () {
+			console.log('---------------- loadend ----------------')
+			console.log(arguments)
+		})
+		xhr.addEventListener('error', function () {
+			console.log('---------------- error ----------------')
+			console.log(arguments)
+		})
+		origOpen.apply(this, arguments)
+	}
+
+	winXhrProto.send = function (data) {
+		console.log('---------------- send ----------------')
+		console.log(arguments)
+		origSend.apply(this, arguments)
+	}
+</script>
+<script src="./lib/axios.min.js"></script>
+<script>
+	const action1 = document.getElementById('action-1')
+	const action2 = document.getElementById('action-2')
+	action1.addEventListener('click', function () {
+		axios
+			.get('https://baidu.com?type=axios')
+			.then(res => {
+				console.log(res)
+			})
+			.catch(err => {
+				console.log(err)
+			})
+	})
+	action2.addEventListener('click', function () {
+		const xhr = new XMLHttpRequest()
+		xhr.open('get', 'https://baidu.com?type=js')
+		xhr.send()
+	})
+</script>

@@ -1,0 +1,15 @@
+<head>
+	<meta charset="UTF-8" />
+</head>
+<button id="action-1">js 按钮</button>
+<script>
+	const action1 = document.getElementById('action-1')
+	action1.addEventListener('click', function () {
+		const data = new URLSearchParams('a=1&b=2&v=' + Math.random())
+		const headers = {
+			type: 'application/x-www-form-urlencoded',
+		}
+		const blob = new Blob([data], headers)
+		navigator.sendBeacon('/test/beacon', blob)
+	})
+</script>

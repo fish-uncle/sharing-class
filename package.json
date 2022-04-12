@@ -1,0 +1,69 @@
+{
+	"name": "sharing-class",
+	"version": "1.0.0",
+	"description": "",
+	"main": ".eslintrc.js",
+	"scripts": {
+		"serve": "http-server -p 1000 -c -1",
+		"commit": "git add . && git-cz"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/fish-uncle/sharing-class.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/fish-uncle/sharing-class/issues"
+	},
+	"homepage": "https://github.com/fish-uncle/sharing-class#readme",
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged",
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+		}
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^11.0.0",
+		"@commitlint/config-conventional": "^11.0.0",
+		"@prettier/plugin-pug": "^1.16.5",
+		"@vue/eslint-config-prettier": "^7.0.0",
+		"@vue/eslint-config-standard": "^5.1.2",
+		"@vue/eslint-config-typescript": "^7.0.0",
+		"commitizen": "^4.2.3",
+		"commitlint-config-cz": "^0.13.2",
+		"cz-conventional-changelog": "^3.3.0",
+		"eslint": "^6.7.2",
+		"babel-eslint": "^8.1.1",
+		"eslint-plugin-flowtype": "^5.4.0",
+		"eslint-plugin-import": "^2.22.1",
+		"eslint-plugin-node": "^11.1.0",
+		"eslint-plugin-prettier": "^3.3.1",
+		"eslint-plugin-promise": "^4.2.1",
+		"eslint-plugin-sonarjs": "^0.6.0",
+		"eslint-plugin-standard": "^5.0.0",
+		"eslint-plugin-vue": "^6.2.2",
+		"git-cz": "^4.7.6",
+		"husky": "^4.3.8",
+		"lint-staged": "^10.5.3",
+		"prettier": "^2.2.1",
+		"stylelint": "^13.3.2",
+		"stylelint-config-prettier": "^8.0.2",
+		"stylelint-config-recess-order": "^2.0.4",
+		"stylelint-config-standard": "^20.0.0"
+	},
+	"config": {
+		"commitizen": {
+			"path": "git-cz"
+		}
+	},
+	"lint-staged": {
+		"*.{less,vue}": "stylelint --config '.stylelintrc.js' --fix",
+		"*.{vue,ts,js}": "eslint --fix",
+		"*.{js,jsx,ts,tsx,html,css,vue,less,scss}": "prettier  --plugin-search-dir ./node_modules --write"
+	},
+	"dependencies": {
+		"http-server": "^14.1.0"
+	}
+}

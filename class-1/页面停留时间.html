@@ -1,0 +1,33 @@
+<head>
+	<meta charset="UTF-8" />
+</head>
+<script>
+	let leaveTime = 0,
+		leaveTimeStart = 0
+	let hiddenProperty =
+		'hidden' in document
+			? 'hidden'
+			: 'webkitHidden' in document
+			? 'webkitHidden'
+			: 'mozHidden' in document
+			? 'mozHidden'
+			: null
+	let visibilityChangeEvent = hiddenProperty.replace(
+		/hidden/i,
+		'visibilitychange',
+	)
+	let onVisibilityChange = function () {
+		//应用是否在前台监听
+		console.log(document[hiddenProperty], new Date())
+		if (document.hidden) {
+			// 不在当前页面
+			leaveTimeStart = new Date()
+		} else {
+			if (leaveTimeStart !== 0) {
+				leaveTime = new Date() - leaveTimeStart
+				leaveTimeStart = 0
+			}
+		}
+	}
+	document.addEventListener(visibilityChangeEvent, onVisibilityChange)
+</script>

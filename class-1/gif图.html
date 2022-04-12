@@ -1,0 +1,20 @@
+<head>
+	<meta charset="UTF-8" />
+</head>
+<button id="action-1">gif 按钮</button>
+<script>
+	const action1 = document.getElementById('action-1')
+	action1.addEventListener('click', function () {
+		const img = new Image()
+		const data = 'a=1&b=2&v=' + Math.random()
+		img.src = `./imgs/gif.gif?${data}`
+		img.onload = function () {
+			// 上报成功
+			console.log('上报成功')
+		}
+		img.onerror = function () {
+			// 上报失败
+			console.log('上报失败')
+		}
+	})
+</script>
