@@ -34,3 +34,4 @@ yarn-error.log*
 *.sln
 *.sw?
 !/uni_modules/
+class-1/lib
