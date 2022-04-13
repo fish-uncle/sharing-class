@@ -1,0 +1,13 @@
+<script>
+	// 构造函数
+	function People(name) {
+		this.name = name
+	}
+	// 定义构造函数的原型 age
+	People.prototype.age = 23
+	// 创建两个实例
+	let People1 = new People('男孩')
+	let People2 = new People('女孩')
+	People.prototype.age = 24 // 原型发生了变化
+	console.log(People1.age, People2.age) // 24 24
+</script>
