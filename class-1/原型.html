@@ -8,6 +8,14 @@
 	// 创建两个实例
 	let People1 = new People('男孩')
 	let People2 = new People('女孩')
+	console.log(People1, People2)
+
 	People.prototype.age = 24 // 原型发生了变化
 	console.log(People1.age, People2.age) // 24 24
+	// People 影响了 People1  People2
+
+	// javascript 在开发这门语言的时候，就没有类这个概念的
+	// 通过 prototype 来共享这部分属性
+	// 通过 构造函数 和 prototype 来模拟类
+	// 每当创建一个函数时，JS会自动给这个函数添加 prototype 、 constructor
 </script>
