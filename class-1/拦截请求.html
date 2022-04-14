@@ -23,7 +23,7 @@
 			console.log('---------------- error ----------------')
 			console.log(arguments)
 		})
-		origOpen.apply(this, arguments)
+		origOpen.apply(xhr, arguments)
 	}
 
 	winXhrProto.send = function (data) {

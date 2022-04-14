@@ -1,0 +1,35 @@
+<head>
+	<meta charset="UTF-8" />
+</head>
+<script>
+	function Fruits() {}
+
+	Fruits.prototype = {
+		color: 'red',
+		say: function () {
+			console.log(this)
+			console.log('My color is ' + this.color)
+		},
+	}
+
+	const apple = new Fruits()
+	apple.say() // My color is red
+
+	const banana = {
+		color: 'yellow',
+	}
+	const a = {}
+	apple.say.apply(banana) // My color is yellow
+	apple.say.apply(a) // My color is undefined
+
+	// 箭头函数
+	// 创建箭头函数时，就已经确定了它的 this 指向
+	// 箭头函数内的 this 指向外层的 this
+
+	// 构造函数
+	// 常规情况下 函数中的 this 一定是 JS 创建的新对象
+	// constructor 返回值
+
+	// bind,apply,call
+	// 修改函数执行时的this指向
+</script>
