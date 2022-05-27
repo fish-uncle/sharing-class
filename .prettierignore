@@ -1,6 +1,5 @@
 .DS_Store
 node_modules
-uni_modules
 mock
 dist
 **.min.js
@@ -33,5 +32,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
-!/uni_modules/
-class-1/lib
+/types/

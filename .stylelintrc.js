@@ -4,6 +4,7 @@ module.exports = {
 		'stylelint-config-recess-order', // 检查属性顺序
 		'stylelint-config-prettier',
 	],
+	plugins: ['stylelint-scss'],
 	rules: {
 		indentation: 'tab',
 		// 禁止使用可以缩写却不缩写的属性
