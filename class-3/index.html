@@ -1,0 +1,27 @@
+<head>
+	<meta charset="UTF-8" />
+</head>
+<p>
+	<textarea rows="15" cols="65" id="encryptCode" placeholder="加密CODE">abc</textarea>
+</p>
+<input id="username" placeholder="账号" />
+<input id="password" placeholder="密码" />
+<button id="login">登录</button>
+<script>
+	const encryptCodeDom = document.getElementById('encryptCode')
+	const loginDom = document.getElementById('login')
+	loginDom.addEventListener('click', function () {
+		const encryptCode = encryptCodeDom.value // 加密CODE 可以从后端ajax获取过来
+		const usernameDom = document.getElementById('username')
+		const passwordDom = document.getElementById('password')
+		const username = usernameDom.value
+		const password = passwordDom.value
+		const xhr = new XMLHttpRequest()
+		xhr.open('post', '/login')
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+		const encodeUsername = window.btoa(username + encryptCode) // md5 加密
+		const encodePassword = window.btoa(password + encryptCode) // md5 加密
+
+		xhr.send(`username=${encodeUsername}&password=${encodePassword}`)
+	})
+</script>

@@ -64,6 +64,9 @@
 		"*.{js,jsx,ts,tsx,html,css,vue,less,scss}": "prettier  --plugin-search-dir ./node_modules --write"
 	},
 	"dependencies": {
-		"http-server": "^14.1.0"
+		"http-server": "^14.1.0",
+		"koa": "^2.13.4",
+		"koa-router": "^10.1.1",
+		"koa-static": "^5.0.0"
 	}
 }
