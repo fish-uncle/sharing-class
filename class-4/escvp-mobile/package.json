@@ -1,0 +1,9 @@
+{
+	"name": "esvcp-mobile",
+	"version": "1.1.034",
+	"description": "JS Bridge",
+	"scripts": {
+		"update-version:pro": "auto-vers -i",
+		"update-version:test": "auto-vers -i prerelease"
+	}
+}

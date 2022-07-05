@@ -1,0 +1,12 @@
+{
+	"name": "yewu",
+	"version": "1.3.0",
+	"description": "业务",
+	"scripts": {
+		"update-version:pro": "auto-vers -i",
+		"update-version:test": "auto-vers -i prerelease"
+	},
+	"devDependencies": {
+		"auto-vers": "^1.0.3"
+	}
+}

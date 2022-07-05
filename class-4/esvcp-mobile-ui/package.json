@@ -1,0 +1,9 @@
+{
+	"name": "esvcp-mobile-ui",
+	"version": "1.2.012",
+	"description": "UI组件库",
+	"scripts": {
+		"update-version:pro": "auto-vers -i",
+		"update-version:test": "auto-vers -i prerelease"
+	}
+}
