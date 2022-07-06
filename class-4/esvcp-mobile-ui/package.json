@@ -3,7 +3,7 @@
 	"version": "1.2.012",
 	"description": "UI组件库",
 	"scripts": {
-		"update-version:pro": "auto-vers -i",
-		"update-version:test": "auto-vers -i prerelease"
+		"update-version:pro": "npm version patch",
+		"update-version:test": "npm version prerelease --preid=beta"
 	}
 }
