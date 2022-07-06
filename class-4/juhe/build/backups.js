@@ -1,7 +1,9 @@
 const pkg = require('../package.json')
-const md5 = require('md5')
 const fs = require('fs')
 const path = require('path')
+const childProcess = require('child_process')
+// 获取分支名
+const branch = childProcess.execSync('git rev-parse --abbrev-ref HEAD').toString().replace(/\s+/, '')
 
 // 需要备份的包
 const needBackUps = ['esvcp-mobile', 'esvcp-mobile-ui', 'yewu']
@@ -9,7 +11,7 @@ const needBackUps = ['esvcp-mobile', 'esvcp-mobile-ui', 'yewu']
 // 备份的值
 let result = {}
 // 备份文件
-const filePath = path.resolve(__dirname, './backups.txt')
+const filePath = path.resolve(__dirname, `./backups-${branch}.json`)
 // 获取package.json中 需要备份的包的version值
 for (const key in pkg.dependencies) {
 	if (needBackUps.indexOf(key) !== -1) {
@@ -26,7 +28,7 @@ for (const key in result) {
 	result[key] = result[key].replace(/.*(\d+\.\d+\.\d+).*/, '$1')
 }
 
-const resultMd5 = md5(result)
+const resultText = JSON.stringify(result)
 if (beta) {
 	console.log('beta版本不作备份')
 } else {
@@ -39,7 +41,7 @@ if (beta) {
 					console.log('读取文件失败')
 					console.log(error)
 				} else {
-					if (resultMd5 !== data) {
+					if (resultText !== data) {
 						update()
 					} else {
 						console.log('版本未变更，不需要更新')
@@ -54,7 +56,7 @@ if (beta) {
 }
 
 const update = () => {
-	fs.writeFile(filePath, md5(result), error => {
+	fs.writeFile(filePath, resultText, error => {
 		if (error) {
 			console.log('备份失败')
 			console.log(error)
